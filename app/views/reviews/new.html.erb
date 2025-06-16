@@ -1,0 +1,13 @@
+<h1>新しいレビューを投稿</h1>
+
+<%= form_with model: @review do |f| %>
+  <div class="mb-3">
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.text_field :isbn, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :content, "感想" %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
+<% end %>

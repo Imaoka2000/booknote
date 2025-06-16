@@ -1,0 +1,23 @@
+<h1>レビュー一覧</h1>
+<% @reviews.each do |review| %>
+  <% book = fetch_book_info(review.isbn) %>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <% if book %>
+        <div class="col-md-4">
+          <img src="<%= book[:cover] %>" class="img-fluid rounded-start" alt="表紙">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= book[:title] %></h5>
+            <p class="card-text">著者: <%= book[:author] %></p>
+            <p class="card-text"><%= review.content %></p>
+            <a href="<%= review_path(review) %>">詳細</a>
+          </div>
+        </div>
+      <% else %>
+        <p>書籍情報を取得できませんでした。</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
