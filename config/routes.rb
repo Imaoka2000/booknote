@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "reviews#index"
-  resources :reviews, only: [ :index, :new, :create, :show ]
+  resources :reviews, only: [ :index, :new, :create, :show, :destroy ]
 end
