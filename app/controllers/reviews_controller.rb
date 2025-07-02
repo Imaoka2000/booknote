@@ -18,6 +18,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to review_path(@review), notice: "レビューを更新しました。"
+  end
+
   def show
     @review = Review.find(params[:id])
     @book = fetch_book_info(@review.isbn)
