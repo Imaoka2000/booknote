@@ -1,0 +1,12 @@
+<h1>レビュー編集</h1>
+
+<%= form_with model: @review, local: true do |form| %>
+<div class="mb-3">
+    <%= form.label :content, "レビュー内容" %>
+    <%= form.text_area :content, class: "form-control", rows: 5 %>
+</div>
+
+<%= form.submit "更新する", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "戻る", review_path(@review), class: "btn btn-secondary mt-3" %>
