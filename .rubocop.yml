@@ -1,8 +1,33 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+inherit_gem: { rubocop-rails-omakase: rubocop.yml } # Omakase Ruby styling for Rails
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+require:
+  - rubocop-performance 
+
+AllCops: 
+  NewCops: enable # 新しいCopsを有効にする
+
+Rails: # Rails特有の書き方やベストプラクティスを検証
+  Enabled: true
+
+Bundler: # gemの重複などの問題を検出
+  Enabled: true
+
+Security: # セキュリティ上の危険なコードを検出
+  Enabled: true
+
+Lint: # 一般的なコードの問題を検出
+  Enabled: true
+
+# ------------------------------ rails ------------------------------
+
+Rails/DynamicFindBy: # generate_token_forによる定義される`find_by_token_for`で利用。
+  Enabled: false
+
+Rails/I18nLocaleTexts: # I18nの強制
+  Enabled: false
+
+Rails/NotNullColumn: # DBのNOT NULL制約が正しく設定されているか検証
+  Enabled: false
+
+Rails/InverseOf: # inverse_ofの検証
+  Enabled: false
