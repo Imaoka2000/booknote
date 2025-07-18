@@ -9,15 +9,21 @@ AllCops:
 Rails: # Rails特有の書き方やベストプラクティスを検証
   Enabled: true
 
-Bundler: # gemの重複などの問題を検出
+Bundler: # gemの重複などの問題を検証
   Enabled: true
 
-Security: # セキュリティ上の危険なコードを検出
+Security: # セキュリティ上の危険なコードを検証
   Enabled: true
 
-Lint: # 一般的なコードの問題を検出
+Lint: # 一般的なコードの問題を検証検証
   Enabled: true
 
+Layout: # コードのレイアウトを検証
+  Enabled: true
+
+Style: # コーディングスタイルを検証
+  Enabled: true
+  
 # ------------------------------ rails ------------------------------
 
 Rails/DynamicFindBy: # generate_token_forによる定義される`find_by_token_for`で利用。
