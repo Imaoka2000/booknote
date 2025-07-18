@@ -39,7 +39,7 @@ Rails/NotNullColumn: # DBのNOT NULL制約が正しく設定されているか�
   Enabled: false
 
 Rails/InverseOf: # inverse_ofの検証
-  Enabled: true
+  Enabled: false
 
 # ------------------------------ Layout ------------------------------
 
