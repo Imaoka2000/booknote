@@ -50,6 +50,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # 処理が遅くなるコードを指摘
+  gem 'rubocop-performance', '~> 1.25', require: false
 end
 
 group :development do
