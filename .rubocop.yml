@@ -48,8 +48,5 @@ Layout/LineLength: # 行の長さを制限
 
 # ------------------------------ Style ------------------------------
 
-Style/EmptyLineBetweenDefs: # メソッド定義の間に空行を入れる
-  Enabled: false
-
 Style/Documentation: # クラスやメソッドのドキュメントコメントを強制
   Enabled: false
