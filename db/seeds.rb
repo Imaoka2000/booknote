@@ -9,14 +9,14 @@
 #   end
 
 # ユーザー作成
-user = User.create!(
+User.create!(
   username: "テストユーザー1",
   email: "test1@example.com",
   password: "password",
   password_confirmation: "password"
 )
 
-user = User.create!(
+User.create!(
   username: "テストユーザー2",
   email: "test2@example.com",
   password: "password",
