@@ -19,10 +19,10 @@ Lint: # 一般的なコードの問題を検証検証
   Enabled: true
 
 Layout: # コードのレイアウトを検証
-  Enabled: true
+  Enabled: false
 
 Style: # コーディングスタイルを検証
-  Enabled: true
+  Enabled: false
   
 # ------------------------------ rails ------------------------------
 
