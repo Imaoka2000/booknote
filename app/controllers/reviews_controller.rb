@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   include OpenbdHelper
@@ -9,6 +11,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @book = fetch_book_info(@review.isbn)
   end
+
   def new
     @review = Review.new
   end
@@ -16,6 +19,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
   end
+
   def create
     @review = current_user.reviews.build(review_params)
     if @review.save
@@ -25,13 +29,11 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
     redirect_to review_path(@review), notice: "レビューを更新しました。"
   end
-
 
   def destroy
     @review = Review.find(params[:id])
@@ -42,6 +44,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.expect(review: [:isbn, :content])
+    params.expect(review: %i[isbn content])
   end
 end
