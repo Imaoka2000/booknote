@@ -1,6 +1,6 @@
 inherit_gem: { rubocop-rails-omakase: rubocop.yml } # Omakase Ruby styling for Rails
 
-require:
+plugins:
   - rubocop-performance 
 
 AllCops: 
