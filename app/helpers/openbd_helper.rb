@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenbdHelper
 require "net/http"
 require "json"
@@ -25,9 +27,7 @@ require "uri"
       ndl_uri = URI.parse(ndl_url)
       res = Net::HTTP.get_response(ndl_uri)
 
-      if res.is_a?(Net::HTTPSuccess)
-        cover_url = ndl_url
-      end
+      cover_url = ndl_url if res.is_a?(Net::HTTPSuccess)
     end
 
     # Step 3: それでも無ければダミー画像
