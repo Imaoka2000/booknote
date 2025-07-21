@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -22,9 +24,9 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
-gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -52,7 +54,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # 処理が遅くなるコードを指摘
-  gem 'rubocop-performance', '~> 1.25', require: false
+  gem "rubocop-performance", "~> 1.25", require: false
 end
 
 group :development do

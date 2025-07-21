@@ -6,23 +6,26 @@ plugins:
 AllCops: 
   NewCops: enable # 新しいCopsを有効にする
 
+  Exclude:
+    - "db/migrate/**/*" # マイグレーションファイルは除外
+
 Rails: # Rails特有の書き方やベストプラクティスを検証
-  Enabled: false
+  Enabled: true
 
 Bundler: # gemの重複などの問題を検証
-  Enabled: false
+  Enabled: true
 
 Security: # セキュリティ上の危険なコードを検証
-  Enabled: false
+  Enabled: true
 
 Lint: # 一般的なコードの問題を検証検証
-  Enabled: false
+  Enabled: true
 
 Layout: # コードのレイアウトを検証
-  Enabled: false
+  Enabled: true
 
 Style: # コーディングスタイルを検証
-  Enabled: false
+  Enabled: true
   
 # ------------------------------ rails ------------------------------
 
@@ -36,4 +39,14 @@ Rails/NotNullColumn: # DBのNOT NULL制約が正しく設定されているか�
   Enabled: false
 
 Rails/InverseOf: # inverse_ofの検証
+  Enabled: false
+
+# ------------------------------ Layout ------------------------------
+
+Layout/LineLength: # 行の長さを制限
+  Enabled: false
+
+# ------------------------------ Style ------------------------------
+
+Style/Documentation: # クラスやメソッドのドキュメントコメントを強制
   Enabled: false
