@@ -40,7 +40,7 @@ Rails/NotNullColumn: # DBのNOT NULL制約が正しく設定されているか�
 
 Rails/InverseOf: # inverse_ofの検証
   Enabled: false
-
+  
 # ------------------------------ Layout ------------------------------
 
 Layout/LineLength: # 行の長さを制限
