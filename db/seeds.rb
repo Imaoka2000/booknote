@@ -25,6 +25,16 @@ User.create!(
   password_confirmation: "password"
 )
 
+
+# テスト用の本を追加
+Book.create!(
+  isbn: "9784088725093"
+)
+
+Book.create!(
+  isbn: "9784088725444"
+)
+
 # レビュー作成（レビューがUserに紐づいている前提）
 Review.create!(
   user_id: 1,
