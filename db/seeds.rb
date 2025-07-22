@@ -25,7 +25,6 @@ User.create!(
   password_confirmation: "password"
 )
 
-
 # テスト用の本を追加
 Book.create!(
   isbn: "9784088725093"
