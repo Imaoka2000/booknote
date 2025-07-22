@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to book_path(@review.isbn), notice: "レビューを更新しました。"
+      redirect_to book_path(@review.isbn), notice: "レビューを更新しました"
     else
       render :edit
     end

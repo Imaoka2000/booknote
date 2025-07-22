@@ -11,9 +11,8 @@
 
     <% if current_user == review.user %>
       <%= link_to "編集", edit_review_path(review), class: "btn btn-sm btn-outline-primary" %>
-      <%= link_to "削除", review_path(review), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+      <%= link_to "削除", review_path(review), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
     <% end %>
   </div>
 <% end %>
-
 <%# <%= link_to "レビューを書く", new_review_path(isbn: @book.isbn), class: "btn btn-primary" %> %>
