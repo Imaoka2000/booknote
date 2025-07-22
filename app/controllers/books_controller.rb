@@ -1,11 +1,26 @@
 # frozen_string_literal: true
 
-module OpenbdHelper
-require "net/http"
-require "json"
-require "uri"
+class BooksController < ApplicationController
+  def index
+    @books = Book.all
+    @book_infos = @books.to_h do |book|
+      [ book.isbn, fetch_book_info(book.isbn) ]
+    end
+  end
+
+  def show
+    @book = Book.find_by(isbn: params[:id])
+    @reviews = Review.where(isbn: @book&.isbn)
+    @book_info = fetch_book_info(@book.isbn)
+  end
+
+  private
 
   def fetch_book_info(isbn)
+    require "net/http"
+    require "json"
+    require "uri"
+
     cover_url = nil
 
     # Step 1: OpenBDで取得
