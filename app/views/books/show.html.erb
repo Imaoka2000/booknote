@@ -1,0 +1,19 @@
+<h1><%= @book_info[:title] %></h1>
+<p><%= @book_info[:author] %></p>
+<img src="<%= @book_info[:cover] %>" class="img-fluid rounded-start" alt="表紙">
+
+<h2>レビュー一覧</h2>
+
+<% @reviews.each do |review| %>
+  <div class="review-card">
+    <p><strong><%= review.user.username %></strong> さんのレビュー</p>
+    <p><%= simple_format(review.content) %></p>
+
+    <% if current_user == review.user %>
+      <%= link_to "編集", edit_review_path(review), class: "btn btn-sm btn-outline-primary" %>
+      <%= link_to "削除", review_path(review), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+    <% end %>
+  </div>
+<% end %>
+
+<%# <%= link_to "レビューを書く", new_review_path(isbn: @book.isbn), class: "btn btn-primary" %> %>
