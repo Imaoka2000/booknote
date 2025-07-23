@@ -8,3 +8,26 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: darkgray;
+}
+
+footer {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 1000;
+  background-color: darkgray;
+}
+
+main {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 40px;
+}
