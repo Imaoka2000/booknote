@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   root "books#index"
   resources :books
   resources :reviews
+  get "credits", to: "pages#credits"
 end

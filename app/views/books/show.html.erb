@@ -1,17 +1,35 @@
-<h1><%= @book_info[:title] %></h1>
-<p><%= @book_info[:author] %></p>
-<img src="<%= @book_info[:cover] %>" class="img-fluid rounded-start" alt="表紙">
+<h1 class="mb-4"><%= @book_info[:title] %></h1>
 
-<h2>レビュー一覧</h2>
-
-<% @reviews.each do |review| %>
-  <div class="review-card">
-    <p><strong><%= review.user.username %></strong> さんのレビュー</p>
-    <p><%= simple_format(review.content) %></p>
-
-    <% if current_user == review.user %>
-      <%= link_to "編集", edit_review_path(review), class: "btn btn-sm btn-outline-primary" %>
-      <%= link_to "削除", review_path(review), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
-    <% end %>
+<div class="card mb-4 shadow-sm" style="max-width: 700px; margin: 0 auto;">
+  <div class="row g-0">
+    <div class="col-md-4 d-flex align-items-center justify-content-center">
+      <img src="<%= @book_info[:cover] %>" class="img-fluid rounded-start" alt="表紙" style="max-height: 260px;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= @book_info[:title] %></h5>
+        <p class="card-text"><strong>作者:</strong> <%= @book_info[:author] %></p>
+        <p class="card-text"><strong>ISBN:</strong> <%= @book.isbn %></p>
+      </div>
+    </div>
   </div>
+</div>
+
+<h2 class="mt-5 mb-3 h5">レビュー一覧</h2>
+
+<% if @reviews.present? %>
+  <ul class="list-group mb-4">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item">
+        <p class="mb-1"><strong><%= review.user&.username || "匿名" %></strong> さんのレビュー</p>
+        <p class="mb-2"><%= simple_format(review.content) %></p>
+        <% if current_user == review.user %>
+          <%= link_to "編集", edit_review_path(review), class: "btn btn-sm btn-outline-primary me-2" %>
+          <%= link_to "削除", review_path(review), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-muted">レビューはまだありません。</p>
 <% end %>

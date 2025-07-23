@@ -1,12 +1,21 @@
-<h1>人気書籍一覧</h1>
+<h1 class="mb-4">人気書籍一覧</h1>
 
-<% @book_infos.each do |isbn, book_info| %>
-  <div class="book-card">
-    <div class="col-md-4">
-      <img src="<%= book_info[:cover] %>" class="img-fluid rounded-start" alt="表紙">
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @book_infos.each do |isbn, book_info| %>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="row g-0">
+          <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <img src="<%= book_info[:cover] %>" class="img-fluid rounded-start" alt="表紙" style="max-height: 180px;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title mb-2"><%= link_to book_info[:title], book_path(isbn), class: "text-decoration-none" %></h5>
+              <p class="card-text mb-0"><strong>作者:</strong> <%= book_info[:author] %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <h2><%= link_to book_info[:title], book_path(isbn) %></h2>
-    <p><%= book_info[:author] %></p>
-    <%= image_tag book_info[:cover_url], alt: book_info[:title], width: 120 if book_info[:cover_url] %>
-  </div>
-<% end %>
+  <% end %>
+</div>
