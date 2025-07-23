@@ -1,12 +1,11 @@
 <h1>人気書籍一覧</h1>
 
-<% @books.each do |book| %>
-  <% book_info = fetch_book_info(book.isbn) %>
+<% @book_infos.each do |isbn, book_info| %>
   <div class="book-card">
     <div class="col-md-4">
       <img src="<%= book_info[:cover] %>" class="img-fluid rounded-start" alt="表紙">
     </div>
-    <h2><%= link_to book_info[:title], book_path(book.isbn) %></h2>
+    <h2><%= link_to book_info[:title], book_path(isbn) %></h2>
     <p><%= book_info[:author] %></p>
     <%= image_tag book_info[:cover_url], alt: book_info[:title], width: 120 if book_info[:cover_url] %>
   </div>
