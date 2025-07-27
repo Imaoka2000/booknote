@@ -1,8 +1,11 @@
 {
     "cSpell.words": [
         "fullpath",
+        "omniauthable",
         "openbd",
         "referer",
-        "strftime"
+        "strftime",
+        "timeoutable",
+        "validatable"
     ]
 }

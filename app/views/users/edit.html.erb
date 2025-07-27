@@ -1,0 +1,8 @@
+<%= form_with model: @user, local: true do |form| %>
+  <!-- 他の項目 -->
+  <div class="mb-3">
+    <%= form.label :profile_image, "プロフィール画像" %>
+    <%= form.file_field :profile_image, class: "form-control" %>
+  </div>
+  <%= form.submit "更新する", class: "btn btn-primary" %>
+<% end %>
