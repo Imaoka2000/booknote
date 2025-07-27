@@ -1,0 +1,29 @@
+<h1>プロフィール設定</h1>
+
+<div data-controller="profile-image">
+  <%= form_with model: @user, local: true,  html: { multipart: true } do |form| %>
+    <div class="mb-3">
+      <%= form.label :username, "ユーザー名" %>
+      <%= form.text_field :username, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :bio, "自己紹介文" %>
+      <%= form.text_area :bio, class: "form-control", rows: 4 %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :profile_image, "プロフィール画像" %>
+      <%= form.file_field :profile_image, class: "form-control", id: "profile_image_input", data: { "profile-image-target": "input" } %>
+      <div class="mt-2">
+        <img id="profile_image_preview"
+             src="<%= @user.profile_image.attached? ? url_for(@user.profile_image) : '/images/dummy.png' %>"
+             width="150" height="150"
+             class="rounded-circle"
+             alt="プロフィール画像プレビュー"
+             data-profile-image-target="preview">
+      </div>
+    </div>
+    <%= form.submit "更新する", class: "btn btn-primary" %>
+  <% end %>
+</div>

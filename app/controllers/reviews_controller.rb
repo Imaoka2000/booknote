@@ -8,7 +8,9 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
-  def edit; end
+  def edit
+    session[:previous_url] = request.referer
+  end
 
   def create
     @review = current_user.reviews.build(review_params)
@@ -21,15 +23,15 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to book_path(@review.isbn), notice: "レビューを更新しました"
+      redirect_to session[:previous_url], notice: "レビューを更新しました"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @review.destroy
-    redirect_to book_path(@review.isbn), notice: "レビューを削除しました"
+    redirect_back fallback_location: root_path, notice: "レビューを更新しました"
   end
 
   private

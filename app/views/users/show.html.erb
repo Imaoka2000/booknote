@@ -1,0 +1,54 @@
+<div class="d-flex align-items-center mb-3">
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image.variant(resize_to_limit: [70, 70]), class: "rounded-circle me-3", alt: "プロフィール画像" %>
+  <% else %>
+    <%= image_tag "/images/dummy.png", width: 70, height: 70, class: "rounded-circle me-3", alt: "デフォルト画像" %>
+  <% end %>
+  <div>
+    <div class="fw-bold fs-4 mb-1"><%= @user.username %></div>
+    <% if @user.bio.present? %>
+      <div class="text-muted"><%= simple_format(@user.bio) %></div>
+    <% end %>
+  </div>
+</div>
+
+<h1 class="mb-4">投稿したレビュー</h1>
+<ul class="list-unstyled">
+  <% if @reviews.present? %>
+    <% @reviews.each do |review| %>
+      <% book_info = @book_infos[review.isbn] || {} %>
+      <li class="mb-4">
+        <div class="card border rounded shadow-sm" style="max-width: 700px; margin: 0 auto;">
+          <div class="row g-0 align-items-center">
+            <div class="col-md-3 d-flex align-items-center justify-content-center p-3">
+              <% if book_info[:cover].present? %>
+                <img src="<%= book_info[:cover] %>" class="img-fluid rounded" alt="表紙" style="max-height: 180px;">
+              <% else %>
+                <div class="text-muted text-center">画像がありません</div>
+              <% end %>
+            </div>
+            <div class="col-md-9 p-3">
+              <h5 class="card-title mb-1">
+                <%= link_to book_info[:title] || "タイトル不明", book_path(review.isbn), class: "text-dark" %>
+              </h5>
+              <p class="mb-1"><strong>作者:</strong> <%= book_info[:author] || "不明" %></p>
+              <p class="mb-1"><strong>ISBN:</strong> <%= review.isbn %></p>
+            </div>
+          </div>
+          <hr class="my-0">
+          <div class="card-body pt-3 pb-2">
+            <p class="mb-2"><%= simple_format(review.content) %></p>
+            <% if current_user == review.user %>
+              <div class="d-flex">
+                <%= link_to "編集", edit_review_path(review), class: "btn btn-sm btn-outline-primary me-2" %>
+                <%= link_to "削除", review_path(review), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% else %>
+    <p>レビューがありません。</p>
+  <% end %>
+</ul>

@@ -21,7 +21,14 @@
   <ul class="list-group mb-4">
     <% @reviews.each do |review| %>
       <li class="list-group-item">
-        <p class="mb-1"><strong><%= review.user&.username || "匿名" %></strong> さんのレビュー</p>
+        <p class="mb-1 d-flex align-items-center">
+          <% if review.user&.profile_image&.attached? %>
+            <%= image_tag review.user.profile_image.variant(resize_to_limit: [32, 32]), class: "rounded-circle me-2", alt: "ユーザーアイコン" %>
+          <% else %>
+            <%= image_tag "/images/dummy.png", width: 32, height: 32, class: "rounded-circle me-2", alt: "デフォルトアイコン" %>
+          <% end %>
+          <strong><%= review.user&.username || "匿名" %></strong>
+        </p>
         <p class="mb-2"><%= simple_format(review.content) %></p>
         <% if current_user == review.user %>
           <%= link_to "編集", edit_review_path(review), class: "btn btn-sm btn-outline-primary me-2" %>
