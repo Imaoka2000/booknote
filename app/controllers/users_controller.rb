@@ -24,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.expect(user: %i[password password_confirmation profile_image])
+    params.expect(user: %i[username bio profile_image])
   end
 end
