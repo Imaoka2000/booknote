@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   resources :books
   resources :reviews
   resources :users
+  resource :user_settings
   get "credits", to: "pages#credits"
 end
