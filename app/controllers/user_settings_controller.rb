@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class UserSettingsController < ApplicationController
-  before_action :set_user
+before_action :authenticate_user!
+before_action :set_user
+
+  def show; end
 
   def edit; end
 
@@ -11,6 +14,12 @@ class UserSettingsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    current_user.destroy
+    reset_session
+    redirect_to root_path, notice: "アカウントを削除しました"
   end
 
   private
