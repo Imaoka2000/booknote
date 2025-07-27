@@ -1,12 +1,12 @@
 <h1>ユーザー設定</h1>
-<p>アカウント情報の管理はこちらから行えます。</p>
 
-<h2>ユーザー設定メニュー</h2>
 <ul>
-  <li><%= link_to "プロフィール編集", edit_user_settings_path, data: { turbo_frame: "_top" } %></li>
+  <li><%= link_to "プロフィール編集", edit_user_path(current_user), data: { turbo_frame: "_top" } %></li>
+  <li><%= link_to "アカウント設定", edit_user_settings_path, data: { turbo_frame: "_top" } %></li>
 </ul>
 
 <hr>
+
 <!-- アカウント削除フォーム -->
 <div style="margin-top:2em;">
   <h3>アカウント削除</h3>

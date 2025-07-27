@@ -31,9 +31,17 @@
       <nav>
         <a href="/" class="btn btn-link">ホーム</a>
         <a href="/reviews/new" class="btn btn-link">新規レビュー</a>
+        
+        <% if user_signed_in? %>
+          <a href="/users/<%= current_user.id %>" class="btn btn-link">マイページ</a>
+          <a href="/user_settings" class="btn btn-link">設定</a>
+          <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-link text-danger" %>
+        <% else %>
+          <a href="<%= new_user_session_path %>" class="btn btn-link">新規会員登録/ログイン</a>
+        <% end %>
       </nav>
     </div>
-  </header>
+</header>   
 
   <main>
     <%= yield %>

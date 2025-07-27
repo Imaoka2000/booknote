@@ -1,15 +1,16 @@
-<%= link_to edit_user_path(@user) do %>
+<div class="d-flex align-items-center mb-3">
   <% if @user.profile_image.attached? %>
-    <%= image_tag @user.profile_image.variant(resize_to_limit: [70, 70]), class: "rounded-circle mb-3", alt: "プロフィール画像" %>
+    <%= image_tag @user.profile_image.variant(resize_to_limit: [70, 70]), class: "rounded-circle me-3", alt: "プロフィール画像" %>
   <% else %>
-    <%= image_tag "/images/dummy.png", width: 70, height: 70, class: "rounded-circle mb-3", alt: "デフォルト画像" %>
+    <%= image_tag "/images/dummy.png", width: 70, height: 70, class: "rounded-circle me-3", alt: "デフォルト画像" %>
   <% end %>
-<% end %>
-
-  <div class="mb-3">
-    <span class="fw-bold">自己紹介文：</span>
-    <p class="border rounded p-2 bg-light"><%= simple_format(@user.bio) %></p>
+  <div>
+    <div class="fw-bold fs-4 mb-1"><%= @user.username %></div>
+    <% if @user.bio.present? %>
+      <div class="text-muted"><%= simple_format(@user.bio) %></div>
+    <% end %>
   </div>
+</div>
 
 <h1 class="mb-4">投稿したレビュー</h1>
 <ul class="list-unstyled">
