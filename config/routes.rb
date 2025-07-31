@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   root "books#index"
   resources :books
-  resources :reviews
+  resources :reviews do
+    resources :review_likes, only: %i[create destroy]
+  end
   resources :users
   resource :user_settings
   get "credits", to: "pages#credits"
