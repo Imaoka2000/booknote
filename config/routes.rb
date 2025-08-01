@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   root "books#index"
   resources :books
-  resources :reviews
+  resources :reviews do
+    post "toggle_like", to: "review_likes#toggle", as: :toggle_like
+  end
   resources :users
   resource :user_settings
   get "credits", to: "pages#credits"

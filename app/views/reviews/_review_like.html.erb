@@ -1,0 +1,13 @@
+<turbo-frame id="review_like_<%= review.id %>">
+  <%= form_with url: review_toggle_like_path(review), method: :post do %>
+    <% if review.review_likes.exists?(user: current_user) %>
+      <button type="submit" class="btn btn-outline-danger">
+        いいね解除 (<%= review.review_likes.count %>)
+      </button>
+    <% else %>
+      <button type="submit" class="btn btn-outline-primary">
+        いいね (<%= review.review_likes.count %>)
+      </button>
+    <% end %>
+  <% end %>
+</turbo-frame>
