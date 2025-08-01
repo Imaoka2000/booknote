@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root "books#index"
   resources :books
   resources :reviews do
-    resources :review_likes, only: %i[create destroy]
+    post "toggle_like", to: "review_likes#toggle", as: :toggle_like
   end
   resources :users
   resource :user_settings
